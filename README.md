@@ -1,3 +1,6 @@
+
+#comando inicial
+
 git clone https://github.com/leobravoe/laravel-dsw2-2025-1.git
 
 cd laravel-dsw2-2025-1
