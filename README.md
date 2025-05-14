@@ -13,7 +13,7 @@ php artisan key:generate
 
 Configurar o arquivo .env com o nome da base de dados "restaurantedb"
 
-php artisan reset-database
+php artisan migrate:fresh --seed
 
 Com o projeto configurado, para atualizar:
 
