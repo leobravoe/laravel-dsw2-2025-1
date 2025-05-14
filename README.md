@@ -29,7 +29,7 @@
     Configurar o arquivo .env com o nome da base de dados "restaurantedb_2"
     ```
 
-7. crei o banco de dados
+7. Crie o banco de dados
     ```bash
     php artisan migrate:fresh --seed
     ```
