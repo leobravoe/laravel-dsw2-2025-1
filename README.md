@@ -1,22 +1,47 @@
 
-#comando inicial
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/leobravoe/laravel-dsw2-2025-1.git
+    ```
 
-git clone https://github.com/leobravoe/laravel-dsw2-2025-1.git
+2. Entre na pasta:
+    ```bash
+    cd laravel-dsw2-2025-1
+    ```
 
-cd laravel-dsw2-2025-1
+3. Utilize o comando para baixar os pacotes do composer.json:
+    ```bash
+    composer update
+    ```
 
-composer update
+4. Crie o arquivo .env
+    ```bash
+    copy .env.example .env
+    ```
 
-copy .env.example .env
+5. Gere a chave
+    ```bash
+    php artisan key:generate
+    ```
 
-php artisan key:generate
+6. Atualize o nome do banco de dados
+    ```bash
+    Configurar o arquivo .env com o nome da base de dados "restaurantedb_2"
+    ```
 
-Configurar o arquivo .env com o nome da base de dados "restaurantedb_2"
-
-php artisan migrate:fresh --seed
+7. crei o banco de dados
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
 
 Com o projeto configurado, para atualizar:
 
-git reset --hard
+1. Mova para o commit mais atual
+    ```bash
+    git reset --hard
+    ```
 
-git pull
+2. Baixe a atualização
+    ```bash
+    git pull
+    ```
