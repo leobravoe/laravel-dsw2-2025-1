@@ -36,7 +36,7 @@
 
 Com o projeto configurado, para atualizar:
 
-1. Mova para o commit mais atual
+1. Reseta para o commit mais atual
     ```bash
     git reset --hard
     ```
