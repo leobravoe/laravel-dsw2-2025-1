@@ -11,7 +11,7 @@ class TipoProdutoController extends Controller
      */
     public function index()
     {
-        //
+        return "Método index de TipoProduto chamado.";
     }
 
     /**
