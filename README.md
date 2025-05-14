@@ -36,6 +36,11 @@
 
 Com o projeto configurado, para atualizar:
 
+1. Limpa para o commit mais atual
+    ```bash
+    git clean -fd
+    ```
+
 1. Reseta para o commit mais atual
     ```bash
     git reset --hard
