@@ -8,5 +8,7 @@
 </head>
 <body>
     <h1>View index de TipoProduto</h1>
+    <p>sadasdas</p>
+    <button>asdasd</button>
 </body>
 </html>
