@@ -11,46 +11,48 @@
 </head>
 
 <body>
-    <a href="#" class="btn btn-primary">Criar TipoProduto</a>
-    <a href="#" class="btn btn-primary">Voltar</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Pizza</td>
-                <td>
-                    <a href="#" class="btn btn-primary">Mostrar</a>
-                    <a href="#" class="btn btn-secondary">Editar</a>
-                    <a href="#" class="btn btn-danger">Remover</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Suco</td>
-                <td>
-                    <a href="#" class="btn btn-primary">Mostrar</a>
-                    <a href="#" class="btn btn-secondary">Editar</a>
-                    <a href="#" class="btn btn-danger">Remover</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Cerveja</td>
-                <td>
-                    <a href="#" class="btn btn-primary">Mostrar</a>
-                    <a href="#" class="btn btn-secondary">Editar</a>
-                    <a href="#" class="btn btn-danger">Remover</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <a href="#" class="btn btn-primary">Criar TipoProduto</a>
+        <a href="#" class="btn btn-primary">Voltar</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Pizza</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">Mostrar</a>
+                        <a href="#" class="btn btn-secondary">Editar</a>
+                        <a href="#" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Suco</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">Mostrar</a>
+                        <a href="#" class="btn btn-secondary">Editar</a>
+                        <a href="#" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Cerveja</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">Mostrar</a>
+                        <a href="#" class="btn btn-secondary">Editar</a>
+                        <a href="#" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
