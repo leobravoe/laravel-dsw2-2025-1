@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoController extends Controller
 {
@@ -11,7 +12,10 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return view("produto.index");
+        // buscar todos os produtos cadastrado na tabela
+        $produtos = DB::select("SELECT * FROM Produtos");
+        //dd($produtos);
+        return view("produto.index")->with("produtos", $produtos);
     }
 
     /**
