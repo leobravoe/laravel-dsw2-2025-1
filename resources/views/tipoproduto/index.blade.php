@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    {{-- @dump($tipoProdutos) --}}
     <div class="container">
         <a href="#" class="btn btn-primary">Criar TipoProduto</a>
         <a href="#" class="btn btn-primary">Voltar</a>
@@ -23,33 +24,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Pizza</td>
-                    <td>
-                        <a href="#" class="btn btn-primary">Mostrar</a>
-                        <a href="#" class="btn btn-secondary">Editar</a>
-                        <a href="#" class="btn btn-danger">Remover</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Suco</td>
-                    <td>
-                        <a href="#" class="btn btn-primary">Mostrar</a>
-                        <a href="#" class="btn btn-secondary">Editar</a>
-                        <a href="#" class="btn btn-danger">Remover</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Cerveja</td>
-                    <td>
-                        <a href="#" class="btn btn-primary">Mostrar</a>
-                        <a href="#" class="btn btn-secondary">Editar</a>
-                        <a href="#" class="btn btn-danger">Remover</a>
-                    </td>
-                </tr>
+                @foreach ($tipoProdutos as $tipoProduto)
+                    <tr>
+                        <th> {{ $tipoProduto->id }} </th>
+                        <td> {{ $tipoProduto->descricao }} </td>
+                        <td>
+                            <a href="#" class="btn btn-primary">Mostrar</a>
+                            <a href="#" class="btn btn-secondary">Editar</a>
+                            <a href="#" class="btn btn-danger">Remover</a>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

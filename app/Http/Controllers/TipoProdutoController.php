@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TipoProdutoController extends Controller
 {
@@ -11,7 +12,9 @@ class TipoProdutoController extends Controller
      */
     public function index()
     {
-        return view("tipoproduto.index");
+        $tipoProdutos = DB::select("SELECT * FROM Tipo_Produtos");
+        //dd($tipoProdutos); // debug de variável
+        return view("tipoproduto.index")->with("tipoProdutos", $tipoProdutos);
     }
 
     /**
