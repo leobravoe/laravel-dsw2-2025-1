@@ -42,6 +42,7 @@ class TipoProdutoController extends Controller
         $tipoProduto->descricao = $request->descricao;
         // realiza a operação salvar do model;
         $tipoProduto->save();
+        // Força o navegador a dar um GET na rota
         return redirect("/tipoproduto");
     }
 
