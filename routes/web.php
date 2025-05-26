@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Route::get("/tipoproduto", "App\Http\Controllers\TipoProdutoController@index");
+Route::get("/tipoproduto/create", "App\Http\Controllers\TipoProdutoController@create");
 
 Route::get("/produto", "App\Http\Controllers\ProdutoController@index");
