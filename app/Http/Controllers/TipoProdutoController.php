@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\TipoProduto;
 
 class TipoProdutoController extends Controller
 {
@@ -30,7 +31,18 @@ class TipoProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // crio a variável $tipoProduto
+        // essa variável recebe a criação de um novo objeto Model
+        // use App\Models\TipoProduto;
+        $tipoProduto = new TipoProduto();
+        // Dentro do objeto da classe Model eu tenho tudo que tem na tabela do banco.
+        // Uma das coisas que tenho na tabela do banco é a descricao
+        // Tudo que está NOMEADO dentro da view que enviou os dados pode ser acessado pela
+        // variável $request
+        $tipoProduto->descricao = $request->descricao;
+        // realiza a operação salvar do model;
+        $tipoProduto->save();
+        return redirect("/tipoproduto");
     }
 
     /**
