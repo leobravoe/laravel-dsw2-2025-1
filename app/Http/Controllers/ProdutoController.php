@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use \App\Models\Produto;
 
 class ProdutoController extends Controller
 {
@@ -31,11 +32,19 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        echo $request->nome . "<br>";
-        echo $request->preco . "<br>";
-        echo $request->Tipo_Produtos_id . "<br>";
-        echo $request->ingredientes . "<br>";
-        echo $request->urlImage . "<br>";
+        // use \App\Models\Produto;
+        // Crio um objeto $produto do Model
+        $produto = new Produto();
+        // informação no model = informação que veio da view
+        $produto->nome = $request->nome;
+        $produto->preco = $request->preco;
+        $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
+        $produto->ingredientes = $request->ingredientes;
+        $produto->urlImage = $request->urlImage;
+        // Salva o model no banco de dados
+        $produto->save();
+        // Força recarregar a página /produto
+        return redirect("/produto");
     }
 
     /**
