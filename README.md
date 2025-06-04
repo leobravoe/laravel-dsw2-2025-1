@@ -29,7 +29,12 @@
     Configurar o arquivo .env com o nome da base de dados "restaurantedb_2"
     ```
 
-7. Crie o banco de dados
+7. Crie o banco de dados, caso não tenha ele
+    ```bash
+    php artisan migrate --force --seed
+    ```
+
+8. Reinicie o banco de dados, caso necessário
     ```bash
     php artisan migrate:fresh --seed
     ```
@@ -41,7 +46,7 @@ Com o projeto configurado, para atualizar:
     git clean -fd
     ```
 
-1. Reseta para o commit mais atual
+2. Reseta para o commit mais atual
     ```bash
     git reset --hard
     ```

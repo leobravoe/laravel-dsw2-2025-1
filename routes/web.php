@@ -22,3 +22,5 @@ Route::get("/tipoproduto/create", "App\Http\Controllers\TipoProdutoController@cr
 Route::post("/tipoproduto", "App\Http\Controllers\TipoProdutoController@store");
 
 Route::get("/produto", "App\Http\Controllers\ProdutoController@index");
+Route::get("/produto/create", "App\Http\Controllers\ProdutoController@create");
+Route::post("/produto", "App\Http\Controllers\ProdutoController@store");

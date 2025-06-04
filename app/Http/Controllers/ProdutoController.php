@@ -23,7 +23,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        return view("produto.create");
     }
 
     /**
@@ -31,7 +31,11 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo $request->nome . "<br>";
+        echo $request->preco . "<br>";
+        echo $request->Tipo_Produtos_id . "<br>";
+        echo $request->ingredientes . "<br>";
+        echo $request->urlImage . "<br>";
     }
 
     /**
