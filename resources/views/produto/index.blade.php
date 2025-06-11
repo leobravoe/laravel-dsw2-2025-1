@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="/produto/create" class="btn btn-primary">Criar Produto</a>
+        <a href="{{route("produto.create")}}" class="btn btn-primary">Criar Produto</a>
         <a href="#" class="btn btn-primary">Voltar</a>
         <table class="table">
             <thead>

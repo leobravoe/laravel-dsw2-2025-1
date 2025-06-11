@@ -44,7 +44,7 @@ class ProdutoController extends Controller
         // Salva o model no banco de dados
         $produto->save();
         // Força recarregar a página /produto
-        return redirect("/produto");
+        return redirect()->route("produto.index");
     }
 
     /**

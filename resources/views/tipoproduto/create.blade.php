@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <form method="post" action="/tipoproduto">
+        <form method="post" action="{{route("tipoproduto.store")}}">
             @CSRF
             <div class="my-3">
                 <label for="id-input-id" class="form-label">ID</label>
@@ -25,7 +25,7 @@
             </div>
             <div class="my-3">
                 <button type="submit" class="btn btn-primary">Enviar</button>
-                <a href="/tipoproduto" class="btn btn-primary">Voltar</a>
+                <a href="{{route("tipoproduto.index")}}" class="btn btn-primary">Voltar</a>
             </div>
         </form>
     </div>

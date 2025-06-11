@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <form method="post" action="/produto">
+        <form method="post" action="{{ route('produto.store') }}">
             @CSRF
             <div class="my-3">
                 <label for="id-input-id" class="form-label">ID</label>
@@ -21,32 +21,27 @@
             </div>
             <div class="my-3">
                 <label for="id-input-nome" class="form-label">Nome</label>
-                <input id="id-input-nome" name="nome" 
-                type="text" class="form-control" placeholder="Digite o nome do produto">
+                <input id="id-input-nome" name="nome" type="text" class="form-control" placeholder="Digite o nome do produto">
             </div>
             <div class="my-3">
                 <label for="id-input-preco" class="form-label">Preço</label>
-                <input id="id-input-preco" name="preco" 
-                       type="text" class="form-control" placeholder="Digite o preço do produto">
+                <input id="id-input-preco" name="preco" type="text" class="form-control" placeholder="Digite o preço do produto">
             </div>
             <div class="my-3">
                 <label for="id-input-Tipo_Produtos_id" class="form-label">Tipo</label>
-                <input id="id-input-Tipo_Produtos_id" name="Tipo_Produtos_id" 
-                       type="text" class="form-control" placeholder="Digite o tipo do produto">
+                <input id="id-input-Tipo_Produtos_id" name="Tipo_Produtos_id" type="text" class="form-control" placeholder="Digite o tipo do produto">
             </div>
             <div class="my-3">
                 <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
-                <input id="id-input-ingredientes" name="ingredientes" 
-                       type="text" class="form-control" placeholder="Digite os ingredientes do produto">
+                <input id="id-input-ingredientes" name="ingredientes" type="text" class="form-control" placeholder="Digite os ingredientes do produto">
             </div>
             <div class="my-3">
                 <label for="id-input-urlImage" class="form-label">UrlImage</label>
-                <input id="id-input-urlImage" name="urlImage" 
-                       type="text" class="form-control" placeholder="Digite o UrlImage do produto">
+                <input id="id-input-urlImage" name="urlImage" type="text" class="form-control" placeholder="Digite o UrlImage do produto">
             </div>
             <div class="my-3">
                 <button type="submit" class="btn btn-primary">Enviar</button>
-                <a href="/produto" class="btn btn-primary">Voltar</a>
+                <a href="{{ route('produto.index') }}" class="btn btn-primary">Voltar</a>
             </div>
         </form>
     </div>

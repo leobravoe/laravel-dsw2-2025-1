@@ -43,7 +43,7 @@ class TipoProdutoController extends Controller
         // realiza a operação salvar do model;
         $tipoProduto->save();
         // Força o navegador a dar um GET na rota
-        return redirect("/tipoproduto");
+        return redirect()->route("tipoproduto.index");
     }
 
     /**
