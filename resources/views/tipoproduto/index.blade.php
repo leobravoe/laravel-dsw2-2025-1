@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    {{-- @dump($tipoProdutos) --}}
     <div class="container">
         <a href="/tipoproduto/create" class="btn btn-primary">Criar TipoProduto</a>
         <a href="#" class="btn btn-primary">Voltar</a>

@@ -35,7 +35,7 @@ class ProdutoController extends Controller
         // use \App\Models\Produto;
         // Crio um objeto $produto do Model
         $produto = new Produto();
-        // informação no model = informação que veio da view
+        // informação no model =recebe= informação que veio da view
         $produto->nome = $request->nome;
         $produto->preco = $request->preco;
         $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
