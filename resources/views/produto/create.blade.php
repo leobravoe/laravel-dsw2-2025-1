@@ -25,11 +25,16 @@
             </div>
             <div class="my-3">
                 <label for="id-input-preco" class="form-label">Preço</label>
-                <input id="id-input-preco" name="preco" type="text" class="form-control" placeholder="Digite o preço do produto">
+                <input id="id-input-preco" name="preco" type="number" class="form-control" placeholder="Digite o preço do produto" step=".01">
             </div>
             <div class="my-3">
-                <label for="id-input-Tipo_Produtos_id" class="form-label">Tipo</label>
-                <input id="id-input-Tipo_Produtos_id" name="Tipo_Produtos_id" type="text" class="form-control" placeholder="Digite o tipo do produto">
+                <label for="id-select-Tipo_Produtos_id" class="form-label">Tipo</label>
+                {{-- <input id="id-input-Tipo_Produtos_id" name="Tipo_Produtos_id" type="text" class="form-control" placeholder="Digite o tipo do produto"> --}}
+                <select name="Tipo_Produtos_id" id="id-select-Tipo_Produtos_id" class="form-select">
+                    <option value="1">Pizza</option>
+                    <option value="2">Suco</option>
+                    <option value="3">Cerveja</option>
+                </select>
             </div>
             <div class="my-3">
                 <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
