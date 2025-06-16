@@ -14,8 +14,11 @@ class ProdutoController extends Controller
     public function index()
     {
         // buscar todos os produtos cadastrado na tabela
-        $produtos = DB::select("SELECT * FROM Produtos");
-        //dd($produtos);
+        $produtos = DB::select("SELECT Produtos.*, 
+                                       Tipo_Produtos.descricao 
+                                FROM Produtos 
+                                JOIN Tipo_Produtos ON Produtos.Tipo_Produtos_id = Tipo_Produtos.id;");
+        // dd($produtos);
         return view("produto.index")->with("produtos", $produtos);
     }
 
@@ -24,7 +27,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view("produto.create");
+        $tipoProdutos = DB::select("SELECT * FROM Tipo_Produtos");
+        return view("produto.create")->with("tipoProdutos", $tipoProdutos);
     }
 
     /**
