@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         {{-- @dump($tipoProdutos) --}}
-        <form method="post" action="{{ route('produto.store') }}">
+        <form method="post" action="{{ route('produto.store') }}" enctype="multipart/form-data">
             @CSRF
             <div class="my-3">
                 <label for="id-input-id" class="form-label">ID</label>
@@ -41,9 +41,10 @@
                 <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
                 <input id="id-input-ingredientes" name="ingredientes" type="text" class="form-control" placeholder="Digite os ingredientes do produto">
             </div>
+            <!-- Adicionando campo de upload de imagem -->
             <div class="my-3">
-                <label for="id-input-urlImage" class="form-label">UrlImage</label>
-                <input id="id-input-urlImage" name="urlImage" type="text" class="form-control" placeholder="Digite o UrlImage do produto">
+                <label for="id-input-imagem" class="form-label">Imagem</label>
+                <input id="id-input-imagem" type="file" class="form-control" name="imagem">
             </div>
             <div class="my-3">
                 <button type="submit" class="btn btn-primary">Enviar</button>

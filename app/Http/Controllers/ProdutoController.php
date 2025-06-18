@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -14,9 +13,9 @@ class ProdutoController extends Controller
     public function index()
     {
         // buscar todos os produtos cadastrado na tabela
-        $produtos = DB::select("SELECT Produtos.*, 
-                                       Tipo_Produtos.descricao 
-                                FROM Produtos 
+        $produtos = DB::select("SELECT Produtos.*,
+                                       Tipo_Produtos.descricao
+                                FROM Produtos
                                 JOIN Tipo_Produtos ON Produtos.Tipo_Produtos_id = Tipo_Produtos.id;");
         // dd($produtos);
         return view("produto.index")->with("produtos", $produtos);
@@ -40,11 +39,25 @@ class ProdutoController extends Controller
         // Crio um objeto $produto do Model
         $produto = new Produto();
         // informação no model =recebe= informação que veio da view
-        $produto->nome = $request->nome;
-        $produto->preco = $request->preco;
+        $produto->nome             = $request->nome;
+        $produto->preco            = $request->preco;
         $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
-        $produto->ingredientes = $request->ingredientes;
-        $produto->urlImage = $request->urlImage;
+        $produto->ingredientes     = $request->ingredientes;
+
+        // Verifica se uma imagem foi enviada e a armazena
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem'); // pega a imagem enviada e coloca na variável $imagem
+            // Usa explode para dividir a string de microtime em duas partes
+            list($segundos, $microsegundos) = explode(".", microtime(true)); // retorna uma string no formato "segundos.microsegundos" desde a era Unix (1 de janeiro de 1970)
+            // Gera o nome da imagem no formato: nome-YYYY-MM-DD-SS-MS.ext
+            $nomeImagem    = $produto->nome . date("-Y-m-d-") . $segundos . "-" . $microsegundos . "." . $imagem->getClientOriginalExtension();
+            $caminhoImagem = public_path("/img/produto");    // caminho da pasta public
+            $imagem->move($caminhoImagem, $nomeImagem);      // coloca a imagem na pasta
+            $produto->urlImage = "/img/produto/$nomeImagem"; // Salva o caminho da imagem no banco de dados
+        } else {
+            $produto->urlImage = "/img/default.png"; // url de imagem padrão
+        }
+
         // Salva o model no banco de dados
         $produto->save();
         // Força recarregar a página /produto
