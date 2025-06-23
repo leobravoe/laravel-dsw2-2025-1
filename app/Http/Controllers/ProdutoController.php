@@ -69,7 +69,8 @@ class ProdutoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $produtos = DB::select('SELECT * FROM Produtos where id = ?', [$id]);
+        dd($produtos);
     }
 
     /**
