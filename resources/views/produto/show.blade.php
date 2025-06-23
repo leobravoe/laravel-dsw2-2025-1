@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    @dump($produto)
+    {{-- @dump($produto) --}}
     <div class="container">
         <div class="my-2">
             <label for="id-input-id" class="form-label">ID</label>

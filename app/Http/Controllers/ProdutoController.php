@@ -55,7 +55,7 @@ class ProdutoController extends Controller
             $imagem->move($caminhoImagem, $nomeImagem);      // coloca a imagem na pasta
             $produto->urlImage = "/img/produto/$nomeImagem"; // Salva o caminho da imagem no banco de dados
         } else {
-            $produto->urlImage = "/img/default.png"; // url de imagem padrão
+            $produto->urlImage = "/img-default/default.png"; // url de imagem padrão
         }
 
         // Salva o model no banco de dados
