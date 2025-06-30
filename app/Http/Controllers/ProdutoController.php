@@ -88,7 +88,16 @@ class ProdutoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Model:find() retorna sempre um objeto caso encontre o elemento, ou null caso não encontre
+        $produto = Produto::find($id);
+        // Verifico se o objeto foi encontrado pelo Model:find()
+        if($produto != null){
+            // Mando carregar a view edit de Produto e dentro dela crio a variável $produto
+            return view("produto.edit")->with("produto", $produto);   
+        }
+        else{
+            return "Produto não encontrado";
+        }
     }
 
     /**
