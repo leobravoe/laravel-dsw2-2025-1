@@ -51,7 +51,18 @@ class TipoProdutoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // DB::select sempre retorna um ARRAY []
+        // Essa consulta retorna um array com 1 objeto ([obj]) ou um array vazio []
+        $tipoProdutos = DB::select('SELECT * FROM Tipo_Produtos where id = ?', [$id]);
+        //dd($produtos);
+
+        // Cláusula para saber se encontro algo ou não
+        if (count($tipoProdutos) == 1) {
+            // Mando a posição 0 do array $tipoProdutos para a variável $tipoProduto na view
+            return view("tipoproduto.show")->with("tipoProduto", $tipoProdutos[0]);
+        } else {
+            return "Produto não encontrado";
+        }
     }
 
     /**
