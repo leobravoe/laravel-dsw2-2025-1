@@ -31,7 +31,14 @@
                 {{-- <input id="id-input-Tipo_Produtos_id" type="text" class="form-control" value="{{ $produto->Tipo_Produtos_id }}"> --}}
                 <select id="id-select-Tipo_Produtos_id" name="Tipo_Produtos_id" class="form-select">
                     @foreach ($tipoProdutos as $tipoProduto)
-                        <option value="{{ $tipoProduto->id }}">{{ $tipoProduto->descricao }}</option>
+                        {{-- Quando eu estiver imprimindo $tipoProduto --}}
+                        {{-- Preciso verificar se: --}}
+                        {{-- $produto->Tipo_Produtos_id == $tipoProduto->id --}}
+                        @if ( $produto->Tipo_Produtos_id == $tipoProduto->id )
+                            <option value="{{ $tipoProduto->id }}" selected>{{ $tipoProduto->descricao }}</option>
+                        @else
+                            <option value="{{ $tipoProduto->id }}">{{ $tipoProduto->descricao }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>
@@ -45,6 +52,7 @@
                 <input id="id-input-imagem" type="file" class="form-control" name="imagem">
             </div>
             <div class="my-2">
+                <button type="submit" class="btn btn-primary">Enviar</button>
                 <a href="{{ route('produto.index') }}" class="btn btn-primary">Voltar</a>
             </div>
         </form>
