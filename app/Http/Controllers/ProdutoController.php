@@ -46,10 +46,10 @@ class ProdutoController extends Controller
 
         // Verifica se uma imagem foi enviada e a armazena
         if ($request->hasFile('imagem')) {
-            $imagem = $request->file('imagem'); // pega a imagem enviada e coloca na variável $imagem
-            // Usa explode para dividir a string de microtime em duas partes
+            $imagem = $request->file('imagem');                              // pega a imagem enviada e coloca na variável $imagem
+                                                                             // Usa explode para dividir a string de microtime em duas partes
             list($segundos, $microsegundos) = explode(".", microtime(true)); // retorna uma string no formato "segundos.microsegundos" desde a era Unix (1 de janeiro de 1970)
-            // Gera o nome da imagem no formato: nome-YYYY-MM-DD-SS-MS.ext
+                                                                             // Gera o nome da imagem no formato: nome-YYYY-MM-DD-SS-MS.ext
             $nomeImagem    = $produto->nome . date("-Y-m-d-") . $segundos . "-" . $microsegundos . "." . $imagem->getClientOriginalExtension();
             $caminhoImagem = public_path("/img/produto");    // caminho da pasta public
             $imagem->move($caminhoImagem, $nomeImagem);      // coloca a imagem na pasta
@@ -75,10 +75,10 @@ class ProdutoController extends Controller
         //dd($produtos);
 
         // Cláusula para saber se encontro algo ou não
-        if( count($produtos) == 1 ){
+        if (count($produtos) == 1) {
             // Mando a posição 0 do array $produtos para a variável $produto na view
             return view("produto.show")->with("produto", $produtos[0]);
-        } else{
+        } else {
             return "Produto não encontrado";
         }
     }
@@ -91,11 +91,13 @@ class ProdutoController extends Controller
         // Model:find() retorna sempre um objeto caso encontre o elemento, ou null caso não encontre
         $produto = Produto::find($id);
         // Verifico se o objeto foi encontrado pelo Model:find()
-        if($produto != null){
+        if ($produto != null) {
+            // Crio o variável $tipoProdutos e coloco um array com
+            // todos os tipos do banco de dados
+            $tipoProdutos = DB::select('SELECT * FROM Tipo_Produtos');
             // Mando carregar a view edit de Produto e dentro dela crio a variável $produto
-            return view("produto.edit")->with("produto", $produto);   
-        }
-        else{
+            return view("produto.edit")->with("produto", $produto)->with("tipoProdutos", $tipoProdutos);
+        } else {
             return "Produto não encontrado";
         }
     }

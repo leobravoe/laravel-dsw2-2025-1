@@ -28,7 +28,12 @@
             </div>
             <div class="my-2">
                 <label for="id-input-Tipo_Produtos_id" class="form-label">Tipo</label>
-                <input id="id-input-Tipo_Produtos_id" type="text" class="form-control" value="{{ $produto->Tipo_Produtos_id }}">
+                {{-- <input id="id-input-Tipo_Produtos_id" type="text" class="form-control" value="{{ $produto->Tipo_Produtos_id }}"> --}}
+                <select id="id-select-Tipo_Produtos_id" name="Tipo_Produtos_id" class="form-select">
+                    @foreach ($tipoProdutos as $tipoProduto)
+                        <option value="{{ $tipoProduto->id }}">{{ $tipoProduto->descricao }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="my-2">
                 <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
