@@ -13,28 +13,29 @@
 <body>
     {{-- @dump($produto) --}}
     <div class="container">
-        <form method="" action="">
+        <form method="post" action="/produto/{{ $produto->id }}">
+            @CSRF
+            @METHOD("put")
             <div class="my-2">
                 <label for="id-input-id" class="form-label">ID</label>
                 <input id="id-input-id" type="text" class="form-control" value="{{ $produto->id }}" disabled>
             </div>
             <div class="my-2">
                 <label for="id-input-nome" class="form-label">Nome</label>
-                <input id="id-input-nome" type="text" class="form-control" value="{{ $produto->nome }}">
+                <input name="nome" id="id-input-nome" type="text" class="form-control" value="{{ $produto->nome }}">
             </div>
             <div class="my-2">
                 <label for="id-input-preco" class="form-label">Preço</label>
-                <input id="id-input-preco" type="text" class="form-control" value="{{ $produto->preco }}">
+                <input name="preco" id="id-input-preco" type="text" class="form-control" value="{{ $produto->preco }}">
             </div>
             <div class="my-2">
                 <label for="id-input-Tipo_Produtos_id" class="form-label">Tipo</label>
-                {{-- <input id="id-input-Tipo_Produtos_id" type="text" class="form-control" value="{{ $produto->Tipo_Produtos_id }}"> --}}
                 <select id="id-select-Tipo_Produtos_id" name="Tipo_Produtos_id" class="form-select">
                     @foreach ($tipoProdutos as $tipoProduto)
                         {{-- Quando eu estiver imprimindo $tipoProduto --}}
                         {{-- Preciso verificar se: --}}
                         {{-- $produto->Tipo_Produtos_id == $tipoProduto->id --}}
-                        @if ( $produto->Tipo_Produtos_id == $tipoProduto->id )
+                        @if ($produto->Tipo_Produtos_id == $tipoProduto->id)
                             <option value="{{ $tipoProduto->id }}" selected>{{ $tipoProduto->descricao }}</option>
                         @else
                             <option value="{{ $tipoProduto->id }}">{{ $tipoProduto->descricao }}</option>
@@ -44,7 +45,7 @@
             </div>
             <div class="my-2">
                 <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
-                <input id="id-input-ingredientes" type="text" class="form-control" value="{{ $produto->ingredientes }}">
+                <input name="ingredientes" id="id-input-ingredientes" type="text" class="form-control" value="{{ $produto->ingredientes }}">
             </div>
             <!-- Adicionando campo de upload de imagem -->
             <div class="my-3">

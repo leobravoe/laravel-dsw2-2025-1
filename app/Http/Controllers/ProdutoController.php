@@ -107,7 +107,10 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        echo $request->nome . "<br>";
+        echo $request->preco . "<br>";
+        echo $request->Tipo_Produtos_id . "<br>";
+        echo $request->ingredientes . "<br>";
     }
 
     /**
