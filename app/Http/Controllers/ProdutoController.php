@@ -107,10 +107,21 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        echo $request->nome . "<br>";
-        echo $request->preco . "<br>";
-        echo $request->Tipo_Produtos_id . "<br>";
-        echo $request->ingredientes . "<br>";
+        // Procurar o cara que eu quero atualizar
+        $produto = Produto::find($id);
+        // Verificar se encontrou o objeto
+        if($produto != null){
+            // Atualizar o objeto
+            $produto->nome = $request->nome;
+            $produto->preco = $request->preco;
+            $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
+            $produto->ingredientes = $request->ingredientes;
+            $produto->updateImage($request, "imagem");
+            $produto->update();
+            return redirect()->route("produto.index");
+        } else{
+            return "Produto não encontrado";
+        }
     }
 
     /**
