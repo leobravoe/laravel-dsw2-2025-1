@@ -13,7 +13,7 @@
 <body>
     {{-- @dump($produto) --}}
     <div class="container">
-        <form method="post" action="/produto/{{ $produto->id }}">
+        <form method="post" action="/produto/{{ $produto->id }}" enctype="multipart/form-data">
             @CSRF
             @METHOD("put")
             <div class="my-2">
