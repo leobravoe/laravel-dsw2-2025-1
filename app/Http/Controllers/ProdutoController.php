@@ -113,7 +113,7 @@ class ProdutoController extends Controller
             }
         } catch (\Throwable $th) {
             DB::rollBack(); // Desfaz a transação em caso de erro
-            // dump($th);
+                            // dump($th);
             return "erro: " . $th->getMessage();
         }
     }
@@ -123,6 +123,17 @@ class ProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // Utilizo o $id para encontrar o cara que quero remover
+            $produto = Produto::find($id);
+            if ($produto != null) {
+                $produto->delete();
+                return redirect()->route("produto.index");
+            } else {
+                return "Produto não encontrado";
+            }
+        } catch (\Throwable $th) {
+            return "Erro: Produto não excluido: " . $th->getMessage();
+        }
     }
 }

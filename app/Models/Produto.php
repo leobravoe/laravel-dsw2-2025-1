@@ -36,5 +36,8 @@ class Produto extends Model
             $this->update();
             $imagem->move($caminhoImagem, $nomeImagem); // Move a imagem para a pasta
         }
+        else{
+            $this->urlImage = "/img-default/default.png";
+        }
     }
 }

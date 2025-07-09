@@ -34,7 +34,11 @@
                         <td>
                             <a href="{{ route('produto.show', $produto->id) }}" class="btn btn-primary">Mostrar</a>
                             <a href="{{ route('produto.edit', $produto->id) }}" class="btn btn-secondary">Editar</a>
-                            <a href="#" class="btn btn-danger">Remover</a>
+                            <form method="post" action="/produto/{{ $produto->id }}" class="d-inline">
+                                @CSRF
+                                @METHOD('delete')
+                                <button type="submit" class="btn btn-danger">Remover</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
