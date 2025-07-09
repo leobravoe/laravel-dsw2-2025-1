@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\TipoProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\TipoProduto;
 
 class TipoProdutoController extends Controller
 {
@@ -70,7 +69,12 @@ class TipoProdutoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tipoProduto = TipoProduto::find($id);
+        if ($tipoProduto != null) {
+            return view("tipoproduto.edit")->with("tipoProduto", $tipoProduto);
+        } else {
+            return "TipoProduto não encontado";
+        }
     }
 
     /**
@@ -78,7 +82,24 @@ class TipoProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        DB::beginTransaction(); // Inicia a transação
+        try {
+            // Procurar o cara que eu quero atualizar
+            $tipoProduto = TipoProduto::find($id);
+            // Verificar se encontrou o objeto
+            if ($tipoProduto != null) {
+                // Atualizar o objeto
+                $tipoProduto->descricao = $request->descricao;
+                $tipoProduto->update();
+                DB::commit(); // Confirma a transação
+                return redirect()->route("tipoproduto.index");
+            } else {
+                return "TipoProduto não encontrado";
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack(); // Desfaz a transação em caso de erro
+            return "erro: " . $th->getMessage();
+        }
     }
 
     /**
