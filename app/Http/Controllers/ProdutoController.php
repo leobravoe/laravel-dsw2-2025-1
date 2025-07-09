@@ -93,20 +93,28 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Procurar o cara que eu quero atualizar
-        $produto = Produto::find($id);
-        // Verificar se encontrou o objeto
-        if($produto != null){
-            // Atualizar o objeto
-            $produto->nome = $request->nome;
-            $produto->preco = $request->preco;
-            $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
-            $produto->ingredientes = $request->ingredientes;
-            $produto->updateImage($request, "imagem");
-            $produto->update();
-            return redirect()->route("produto.index");
-        } else{
-            return "Produto não encontrado";
+        DB::beginTransaction(); // Inicia a transação
+        try {
+            // Procurar o cara que eu quero atualizar
+            $produto = Produto::find($id);
+            // Verificar se encontrou o objeto
+            if ($produto != null) {
+                // Atualizar o objeto
+                $produto->nome             = $request->nome;
+                $produto->preco            = $request->preco;
+                $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
+                $produto->ingredientes     = $request->ingredientes;
+                $produto->update();
+                $produto->updateImage($request, "imagem");
+                DB::commit(); // Confirma a transação
+                return redirect()->route("produto.index");
+            } else {
+                return "Produto não encontrado";
+            }
+        } catch (\Throwable $th) {
+            DB::rollBack(); // Desfaz a transação em caso de erro
+            // dump($th);
+            return "erro: " . $th->getMessage();
         }
     }
 
