@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <a href="{{route("tipoproduto.create")}}" class="btn btn-primary">Criar TipoProduto</a>
-        <a href="#" class="btn btn-primary">Voltar</a>
+        <a href="/" class="btn btn-primary">Voltar</a>
         <table class="table">
             <thead>
                 <tr>
@@ -30,7 +30,11 @@
                         <td>
                             <a href="{{ route('tipoproduto.show', $tipoProduto->id) }}" class="btn btn-primary">Mostrar</a>
                             <a href="{{ route('tipoproduto.edit', $tipoProduto->id) }}" class="btn btn-secondary">Editar</a>
-                            <a href="#" class="btn btn-danger">Remover</a>
+                            <form method="post" action="/tipoproduto/{{ $tipoProduto->id }}" class="d-inline">
+                                @CSRF
+                                @METHOD('delete')
+                                <button type="submit" class="btn btn-danger">Remover</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

@@ -107,6 +107,17 @@ class TipoProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // Utilizo o $id para encontrar o cara que quero remover
+            $tipoProduto = TipoProduto::find($id);
+            if ($tipoProduto != null) {
+                $tipoProduto->delete();
+                return redirect()->route("tipoproduto.index");
+            } else {
+                return "TipoProduto não encontrado";
+            }
+        } catch (\Throwable $th) {
+            return "Erro: tipoProduto não excluido: " . $th->getMessage();
+        }
     }
 }
